@@ -22,6 +22,7 @@ class Bourse(models.Model):
     best_Supply=models.DecimalField(max_digits=10,decimal_places=8)
     best_Demand=models.DecimalField(max_digits=10,decimal_places=8)
     market=models.TextField()
+    #ALI TEST
 
 
 
