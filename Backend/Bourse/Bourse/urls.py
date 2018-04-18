@@ -19,5 +19,5 @@ from django.conf.urls import url , include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^Bourse', include(Bourseapp.urls))
+    url(r'^Bourse/', include('Bourseapp.urls')),
 ]
