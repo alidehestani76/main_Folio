@@ -12,6 +12,7 @@ class Bourse(models.Model):
     final_Change=models.DecimalField(max_digits=10,decimal_places=8)
     final_Persentage=models.FloatField()
     lastest_Amount=models.DecimalField(max_digits=10,decimal_places=8)
+
     lastest_Change=models.DecimalField(max_digits=10,decimal_places=8)
     lastest_Percentage=models.FloatField()
     yesterday=models.DecimalField(max_digits=10,decimal_places=8)
