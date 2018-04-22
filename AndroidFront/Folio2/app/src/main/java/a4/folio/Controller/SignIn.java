@@ -5,6 +5,8 @@ package a4.folio.Controller;
  */
 
 public class SignIn {
-    public static void signIn(String username , String password){}
+    public static void signIn(String username , String password){
+        System.out.println("slm");
+    }
 
 }
