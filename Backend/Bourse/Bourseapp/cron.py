@@ -95,8 +95,8 @@ class From_Bourse :
             stock.best_Demand = data["bData"][i]["val"][19]["v"]
             stocks.append(stock)
         for stock in stocks:
-            file1 = open("/home/wt/Desktop/hasan.txt", "a")
-            file1.write(stock.name)
+            #file1 = open("/home/wt/Desktop/hasan.txt", "a")
+            #file1.write(stock.name)
             self.maping(stock)
 
 
