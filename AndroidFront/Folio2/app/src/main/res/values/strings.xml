@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Folio</string>
+    <string name="sign_in">Sign In</string>
+    <string name="or_create_account"><u>Or Create Account</u></string>
+    <string name="choose_username">Choose Username :</string>
+    <string name="choose_password">Choose Password :</string>
+    <string name="confirm_password">Confirm Password :</string>
+    <string name="email_address">Email Address :</string>
+    <string name="submit">Submit</string>
+</resources>
