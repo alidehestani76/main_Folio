@@ -5,7 +5,7 @@ from Bourseapp.models import Bourse
 class PostListSerializer(ModelSerializer):
     class Meta:
         model=Bourse
-        fields=('id','name')
+        fields='__all__'
 
 class PostDetailsSerializer(ModelSerializer):
     class Meta:

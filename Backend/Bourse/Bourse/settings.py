@@ -25,7 +25,8 @@ SECRET_KEY = 'pp3j*3(t!a$it1zghq4$ry3f$4%2*utg3xr&9qz_k&*v@0au1k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['192.168.43.137']
 
 
 # Application definition
@@ -38,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Bourseapp',
+    'Personapp',
     'rest_framework',
+    'django_crontab',
+    "django_cron",
 ]
 
 MIDDLEWARE = [
@@ -120,3 +124,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+#
+# #we add it to tes the cronapp
+# CRONJOBS = [
+#     ('*/1 * * * *', 'Bousreapp.cron.a.my_scheduled_job')
+# ]
+#
+# CRON_CLASSES = [
+#     "Bourseapp.cron.a",
+#     # ...
+# ]
