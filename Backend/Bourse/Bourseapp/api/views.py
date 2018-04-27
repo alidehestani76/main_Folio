@@ -13,3 +13,4 @@ class PostDetailsAPIview(generics.RetrieveAPIView):
     queryset = Bourse.objects.all()
     serializer_class = PostDetailsSerializer
 
+
