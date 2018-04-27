@@ -29,6 +29,7 @@ def Bourse(request):
         person.user_name=my_q[0]
         person.name = my_q[1]
         person.lastname =my_q[2]
+
         person.save()
 
     return HttpResponse(message)
