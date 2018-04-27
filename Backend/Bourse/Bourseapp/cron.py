@@ -71,7 +71,7 @@ class From_Bourse :
             data = json.loads(url.read().decode())
 
         stocks = []
-        for i in range(0, 301):
+        for i in range(0, 270):
             stock = From_Bourse()
             stock.namad = data["bData"][i]["val"][0]["v"]
             stock.name = data["bData"][i]["val"][1]["v"]
