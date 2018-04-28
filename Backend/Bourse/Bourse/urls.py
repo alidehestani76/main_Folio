@@ -24,5 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^Bourse/', include('Bourseapp.urls')),
     url(r'^api/',include('Bourseapp.api.urls')) ,
+    url(r'^Bourse/', include('Bourseapp.urls')),
+    url(r'^api/',include('Bourseapp.api.urls')) ,
 
 ]
