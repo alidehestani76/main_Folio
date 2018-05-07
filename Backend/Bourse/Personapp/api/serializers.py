@@ -18,6 +18,7 @@ class PostCreateSerializer(ModelSerializer):
         model = Person
         fields = '__all__'
 
+
 class PostUpdateSerializer(ModelSerializer):
     class Meta:
         model = Person
