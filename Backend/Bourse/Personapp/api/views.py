@@ -1,6 +1,7 @@
 from rest_framework import generics
 from Personapp.models import Person
-from.serializers import PostListSerializer , PostDetailsSerializer
+from.serializers import PostListSerializer , PostDetailsSerializer,PostCreateSerializer,PostUpdateSerializer
+
 
 class PostListAPIview(generics.ListAPIView):
     #queryset = Bourse.objects.all()
@@ -14,3 +15,11 @@ class PostDetailsAPIview(generics.RetrieveAPIView):
     serializer_class = PostDetailsSerializer
 
 
+class UserCreateAPIView(generics.CreateAPIView):
+    queryset = Person.objects.all()
+    serializer_class = PostCreateSerializer
+
+class PostUpdateAPIView(generics.RetrieveUpdateAPIView):
+    lookup_field = 'id'
+    queryset = Person.objects.all()
+    serializer_class = PostUpdateSerializer
