@@ -22,3 +22,4 @@ class PostUpdateSerializer(ModelSerializer):
     class Meta:
         model = Person
         fields = ('username','password')
+
