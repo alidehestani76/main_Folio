@@ -1,25 +1,31 @@
 from rest_framework import generics
 from Personapp.models import Person
-from.serializers import PostListSerializer , PostDetailsSerializer,PostCreateSerializer,PostUpdateSerializer
+from.serializers import UserListSerializer , UserDetailsSerializer,UserCreateSerializer,UserUpdateSerializer
 
 
-class PostListAPIview(generics.ListAPIView):
+class UserListAPIview(generics.ListAPIView):
     #queryset = Bourse.objects.all()
     queryset = Person.objects.order_by('username')
-    serializer_class = PostListSerializer
+    serializer_class = UserListSerializer
 
 
-class PostDetailsAPIview(generics.RetrieveAPIView):
+class UserDetailsAPIview(generics.RetrieveAPIView):
     lookup_field = 'username'
     queryset = Person.objects.all()
-    serializer_class = PostDetailsSerializer
+    serializer_class = UserDetailsSerializer
 
 
 class UserCreateAPIView(generics.CreateAPIView):
     queryset = Person.objects.all()
-    serializer_class = PostCreateSerializer
+    serializer_class = UserCreateSerializer
 
-class PostUpdateAPIView(generics.RetrieveUpdateAPIView):
-    lookup_field = 'id'
+class UserUpdateAPIView(generics.RetrieveUpdateAPIView):
+    lookup_field = 'username'
     queryset = Person.objects.all()
-    serializer_class = PostUpdateSerializer
+    serializer_class = UserUpdateSerializer
+
+
+# class person_stocks_view(generics.RetrieveAPIView):
+#     lookup_field = 'username'
+#     queryset = Person.objects.
+#     serializer_class = PostDetailsSerializer

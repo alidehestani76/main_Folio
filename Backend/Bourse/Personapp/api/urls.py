@@ -3,10 +3,14 @@ from . import views
 
 
 urlpatterns = [
-    url(r'^posts/(?P<id>\d+)/update$', views.PostUpdateAPIView.as_view(), name='post-update'),
+
+    url(r'^users/(?P<username>\w{0,50})/update$', views.UserUpdateAPIView.as_view(), name='user-update'),
+    #create user
     url(r'^user/create$', views.UserCreateAPIView.as_view(), name='user-create'),
-    url(r'^all_information',views.PostListAPIview.as_view()) ,
-    url(r'^info/(?P<username>\w{0,50})/$', views.PostDetailsAPIview.as_view()),
+    #all users informations
+    url(r'^person_information',views.UserListAPIview.as_view()) ,
+    #information about a user
+    url(r'^information/(?P<username>\w{0,50})/$', views.UserDetailsAPIview.as_view()),
 
 ]
 

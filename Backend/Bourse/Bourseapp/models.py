@@ -24,6 +24,8 @@ class Bourse(models.Model):
     best_Demand=models.TextField(null=True,blank=True)
     market=models.TextField(null=True,blank=True)
 
+    def __str__(self):
+        return self.namad
 
 
 
