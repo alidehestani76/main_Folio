@@ -27,5 +27,9 @@ class Bourse(models.Model):
     def __str__(self):
         return self.namad
 
+    def getValue(self):
+        return self.value
 
+    def setValue(self,value):
+        self.value=value
 
