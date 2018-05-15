@@ -4,18 +4,18 @@ from Bourseapp.models import Bourse
 from Bourseapp.cron import From_Bourse
 from Personapp.models import Person
 
-# def Bourse(request) :
-#     return render(request,'Bourse.html',{'n':"hi;nothing here ..!.."})
+def Bourse(request) :
+    return render(request,'Bourse.html',{'n':"hi;nothing here ..!.."})
 
 # faghat yadam bemoone:D
-def Bourse(request):
-    if 'q' in request.GET:
-        message = 'You searched for: %r' % request.GET['q']
-    else:
-        message = 'You submitted an empty form.'
-    file1 = open("/home/wt/Desktop/hasan.txt", "a")
-    file1.write(request.GET['q'])
-    return HttpResponse(message)
+# def Bourse(request):
+#     if 'q' in request.GET:
+#         message = 'You searched for: %r' % request.GET['q']
+#     else:
+#         message = 'You submitted an empty form.'
+#     file1 = open("/home/wt/Desktop/hasan.txt", "a")
+#     file1.write(request.GET['q'])
+#     return HttpResponse(message)
 
     # if('q' in request):
     #     my_q=request.GET['q'].split('*')
