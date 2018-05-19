@@ -6,7 +6,7 @@ from Personapp.models import Person
 
 def Bourse(request) :
     return render(request,'Bourse.html',{'n':"hi;nothing here ..!.."})
-    #just test
+    #just tes
 
 # faghat yadam bemoone:D
 # def Bourse(request):
