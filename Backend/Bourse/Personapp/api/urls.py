@@ -12,9 +12,12 @@ urlpatterns = [
     #information about a user
     url(r'^information/(?P<username>\w{0,50})/$', views.UserDetailsAPIview.as_view()),
     #create what person have
-    #url(r'^create_what_person_have/(?P<returned>\w{0,50})/$',views.UpdateMembership.as_view(),name='user will ...') ,
-
+    url(r'^update_what_person_have/(?P<username>\w{0,50})/(?P<namad>\w{0,50})/$',views.UpdateMembership.as_view(),name='user will ...') ,
     #what person have :
     url(r'^person_have/(?P<username>\w{0,50})/$',views.WhatPersonHave.as_view(),name='user has') ,
+    #create membership
+    url(r'^create_membership/create$', views.CreateMembership.as_view(), name='user-create'),
+
+
 ]
 

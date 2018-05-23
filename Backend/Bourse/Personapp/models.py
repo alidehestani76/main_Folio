@@ -23,9 +23,14 @@ class Person(models.Model):
 
 
 
+
 class MemberShip(models.Model):
     bourse=models.ForeignKey(Bourse,on_delete=True)
     person=models.ForeignKey(Person,on_delete=True)
-    person_name=models.TextField(null=True,blank=True,default=person)
-    #pblist=models.ManyToManyField()
-    number_of_stocks_person_has=models.IntegerField(default=0)
+
+    # def validate_even(value):
+    #     if (value == 0):
+    #         MemberShip.objects.filter(bourse=Bourse.pk, person=Person.pk).delete()
+    # number_of_stocks_person_has=models.IntegerField(default=0,validators=[validate_even])
+
+    number_of_stocks_person_has = models.IntegerField(default=0)

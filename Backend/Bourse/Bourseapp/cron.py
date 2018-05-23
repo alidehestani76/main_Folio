@@ -103,6 +103,5 @@ class From_Bourse :
 
 
 
-
 # test=From_Bourse()
 # test.make_Stock()

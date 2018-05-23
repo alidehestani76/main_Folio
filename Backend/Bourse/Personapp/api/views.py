@@ -4,7 +4,7 @@ from Personapp.models import Person,MemberShip
 from Bourseapp.models import Bourse
 
 from.serializers import UserListSerializer , UserDetailsSerializer,UserCreateSerializer,UserUpdateSerializer, \
-    WhatPersonHave,UpdateMembership
+    WhatPersonHave,UpdateMembership,CreateMembership
 
 
 class UserListAPIview(generics.ListAPIView):
@@ -29,20 +29,34 @@ class UserUpdateAPIView(generics.RetrieveUpdateAPIView):
     queryset = Person.objects.all()
     serializer_class = UserUpdateSerializer
 
+# class UpdateMembership(generics.UpdateAPIView):
+#     lookup_fields = ('username', 'boursename')
+#     serializer_class = UpdateMembership
+#     def get_queryset(self):
+#         username = self.kwargs['username']
+#         boursename = self.kwargs['boursename']
+#         return  MemberShip.objects.filter(person=username, bourse=boursename)
 
-class UpdateMembership(generics.RetrieveUpdateAPIView):
 
-    def get_queryset(self):
-        """
-        This view should return a list of all the purchases for
-        the user as determined by the username portion of the URL.
-        """
-        returned = self.kwargs['returned']
-        returned.split('*')
-        return MemberShip.objects.filter(Person__username=returned[0] , Bourse__namad=returned[1])
+class UpdateMembership(generics.UpdateAPIView):
+    #lookup_fields = ('username', 'namad')
 
 
     serializer_class = UpdateMembership
+    def get_object(self):
+        username = self.kwargs['username']
+        namad = self.kwargs['namad']
+        return  MemberShip.objects.get(person=username, bourse=namad)
+
+
+
+
+
+
+class CreateMembership(generics.CreateAPIView):
+    queryset = MemberShip.objects.all()
+    serializer_class = CreateMembership
+
 
 
 
@@ -55,6 +69,6 @@ class WhatPersonHave(generics.ListAPIView):
         the user as determined by the username portion of the URL.
         """
         username = self.kwargs['username']
-        return MemberShip.objects.filter(person_name=username)
+        return MemberShip.objects.filter(person=username)
 
 
