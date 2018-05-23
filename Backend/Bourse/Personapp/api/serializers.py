@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from Personapp.models import Person
+from Personapp.models import Person,MemberShip
 
 
 class UserListSerializer(ModelSerializer):
@@ -24,3 +24,8 @@ class UserUpdateSerializer(ModelSerializer):
         model = Person
         fields = ('username','password')
 
+
+class WhatPersonHave(ModelSerializer):
+    class Meta:
+        model=MemberShip
+        fields=('bourse','person','number_of_stocks_person_has')

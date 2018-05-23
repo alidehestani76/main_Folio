@@ -1,6 +1,10 @@
+
 from rest_framework import generics
-from Personapp.models import Person
-from.serializers import UserListSerializer , UserDetailsSerializer,UserCreateSerializer,UserUpdateSerializer
+from Personapp.models import Person,MemberShip
+from rest_framework import mixins
+
+from.serializers import UserListSerializer , UserDetailsSerializer,UserCreateSerializer,UserUpdateSerializer, \
+    WhatPersonHave
 
 
 class UserListAPIview(generics.ListAPIView):
@@ -12,6 +16,7 @@ class UserListAPIview(generics.ListAPIView):
 class UserDetailsAPIview(generics.RetrieveAPIView):
     lookup_field = 'username'
     queryset = Person.objects.all()
+
     serializer_class = UserDetailsSerializer
 
 
@@ -25,7 +30,24 @@ class UserUpdateAPIView(generics.RetrieveUpdateAPIView):
     serializer_class = UserUpdateSerializer
 
 
-# class person_stocks_view(generics.RetrieveAPIView):
-#     lookup_field = 'username'
-#     queryset = Person.objects.
-#     serializer_class = PostDetailsSerializer
+
+
+# class WhatPersonHave(generics.RetrieveAPIView):
+#     lookup_field = 'person_name'
+#     queryset= MemberShip.objects.all()
+#     serializer_class = WhatPersonHave
+
+
+
+class WhatPersonHave(generics.ListAPIView):
+    serializer_class = WhatPersonHave
+
+    def get_queryset(self):
+        """
+        This view should return a list of all the purchases for
+        the user as determined by the username portion of the URL.
+        """
+        username = self.kwargs['username']
+        return MemberShip.objects.filter(person_name=username)
+
+

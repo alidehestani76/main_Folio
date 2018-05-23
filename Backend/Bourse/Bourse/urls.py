@@ -23,7 +23,7 @@ from django.conf.urls import url , include
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^Bourseapp/', include('Bourseapp.urls')),
-    url(r'^Personapp/', include('Personapp.urls')),
+    #url(r'^Personapp/', include('Personapp.urls')),
     url(r'^Bourseapp_api/',include('Bourseapp.api.urls')) ,
     url(r'^Personapp_api/', include('Personapp.api.urls')),
 
