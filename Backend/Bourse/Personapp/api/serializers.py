@@ -24,6 +24,11 @@ class UserUpdateSerializer(ModelSerializer):
         model = Person
         fields = ('username','password')
 
+class UpdateMembership(ModelSerializer):
+    class Meta:
+        model = MemberShip
+        fields = ('bourse','number_of_stocks_person_has')
+
 
 class WhatPersonHave(ModelSerializer):
     class Meta:

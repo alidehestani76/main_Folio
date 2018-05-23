@@ -54,103 +54,103 @@ from pyasn1.type.univ import Integer
 #     else:
 #         message='shit!!!do it again!!!'
 #
-# def Buy_Sell(request):
-#     if 'buy' in request.GET:
-#         my_buy=request.GET['buy'].split()
-#         user_name=my_buy[0]
-#         num=int(my_buy[1])
-#         stocks_name=my_buy[2]
-#         un = Person.objects.get(username=user_name)
-#         bn = Bourse.objects.get(namad=stocks_name)
-#
-#
-#         #just for remember it's true at all
-#         # usermoney=un.getMoney()
-#         # usermoney+=111
-#         # un.setMoney(usermoney)
-#         # un.save()
-#         #
-#         #
-#         #
-#         # stockvalue=bn.getValue()
-#         # stockvalue=string(stockvalue)
-#         # a=0
-#         # for i in stockvalue:
-#         #     a*=10
-#         #     a+=int(i)
-#         # a+=1000
-#         # un.setMoney(a+un.getMoney())
-#         # un.save()
-#
-#         #convert stock value from textfiled to integer
-#         stockvalue=bn.getValue()
-#         stockvalue=string(stockvalue)
-#         # temp=0
-#         # for i in stockvalue:
-#         #     temp*=10
-#         #     temp+=int(i)
-#         # temp*=num
-#         temp=int(stockvalue)
-#         userMoney=un.getMoney()
-#
-#         if(userMoney<temp):
-#             return HttpResponse("not enough money")
-#         else:
-#             un.setMoney(userMoney-temp)
-#             un.save()
-#         un.save()
-#
-#         is_exist = MemberShip.objects.filter(
-#             bourse=stocks_name,person=user_name).exists()
-#
-#         if(is_exist==False):
-#             MemberShip.objects.create(bourse=bn,person=un,person_name=un.username,number_of_stocks_person_has=num)
-#             message='ok'
-#
-#         else:
-#             obj=MemberShip.objects.get(bourse=bn , person=un)
-#             obj.number_of_stocks_person_has+=num
-#             obj.save()
-#             message="ok!!"
-#         return HttpResponse(message)
-#
-#     elif 'sell' in request.GET:
-#         my_buy = request.GET['sell'].split()
-#         user_name = my_buy[0]
-#         num = int(my_buy[1])
-#         stocks_name = my_buy[2]
-#         un = Person.objects.get(username=user_name)
-#         bn = Bourse.objects.get(namad=stocks_name)
-#
-#         stockvalue = bn.getValue()
-#         stockvalue = string(stockvalue)
-#         temp = 0
-#         for i in stockvalue:
-#             temp *= 10
-#             temp += int(i)
-#         temp *= num
-#         userMoney = un.getMoney()
-#
-#         is_exist = MemberShip.objects.filter(
-#             bourse=stocks_name, person=user_name).exists()
-#         if (is_exist == False):
-#             message = 'see what you have first'
-#
-#         else:
-#             un.setMoney(userMoney+temp)
-#             un.save()
-#             obj = MemberShip.objects.get(bourse=bn, person=un)
-#             if (obj.number_of_stocks_person_has < num):
-#                 message = 'see what you have first'
-#             else:
-#                 obj.number_of_stocks_person_has -= num
-#                 message = "ok!!"
-#             obj.save()
-#         return HttpResponse(message)
-#
-#
-#     return HttpResponse('bad request :D')
-#
+def Buy_Sell(request):
+    if 'buy' in request.GET:
+        my_buy=request.GET['buy'].split()
+        user_name=my_buy[0]
+        num=int(my_buy[1])
+        stocks_name=my_buy[2]
+        un = Person.objects.get(username=user_name)
+        bn = Bourse.objects.get(namad=stocks_name)
+
+
+        #just for remember it's true at all
+        # usermoney=un.getMoney()
+        # usermoney+=111
+        # un.setMoney(usermoney)
+        # un.save()
+        #
+        #
+        #
+        # stockvalue=bn.getValue()
+        # stockvalue=string(stockvalue)
+        # a=0
+        # for i in stockvalue:
+        #     a*=10
+        #     a+=int(i)
+        # a+=1000
+        # un.setMoney(a+un.getMoney())
+        # un.save()
+
+        #convert stock value from textfiled to integer
+        stockvalue=bn.getValue()
+        stockvalue=string(stockvalue)
+        # temp=0
+        # for i in stockvalue:
+        #     temp*=10
+        #     temp+=int(i)
+        # temp*=num
+        temp=int(stockvalue)
+        userMoney=un.getMoney()
+
+        if(userMoney<temp):
+            return HttpResponse("not enough money")
+        else:
+            un.setMoney(userMoney-temp)
+            un.save()
+        un.save()
+
+        is_exist = MemberShip.objects.filter(
+            bourse=stocks_name,person=user_name).exists()
+
+        if(is_exist==False):
+            MemberShip.objects.create(bourse=bn,person=un,person_name=un.username,number_of_stocks_person_has=num)
+            message='ok'
+
+        else:
+            obj=MemberShip.objects.get(bourse=bn , person=un)
+            obj.number_of_stocks_person_has+=num
+            obj.save()
+            message="ok!!"
+        return HttpResponse(message)
+
+    elif 'sell' in request.GET:
+        my_buy = request.GET['sell'].split()
+        user_name = my_buy[0]
+        num = int(my_buy[1])
+        stocks_name = my_buy[2]
+        un = Person.objects.get(username=user_name)
+        bn = Bourse.objects.get(namad=stocks_name)
+
+        stockvalue = bn.getValue()
+        stockvalue = string(stockvalue)
+        temp = 0
+        for i in stockvalue:
+            temp *= 10
+            temp += int(i)
+        temp *= num
+        userMoney = un.getMoney()
+
+        is_exist = MemberShip.objects.filter(
+            bourse=stocks_name, person=user_name).exists()
+        if (is_exist == False):
+            message = 'see what you have first'
+
+        else:
+            un.setMoney(userMoney+temp)
+            un.save()
+            obj = MemberShip.objects.get(bourse=bn, person=un)
+            if (obj.number_of_stocks_person_has < num):
+                message = 'see what you have first'
+            else:
+                obj.number_of_stocks_person_has -= num
+                message = "ok!!"
+            obj.save()
+        return HttpResponse(message)
+
+
+    return HttpResponse('bad request :D')
+
 #
 #
 #
