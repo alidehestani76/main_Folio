@@ -16,12 +16,14 @@ class UserDetailsSerializer(ModelSerializer):
 class UserCreateSerializer(ModelSerializer):
     class Meta:
         model = Person
-        fields = '__all__'
+        fields = ('username','name','lastname'
+                  ,'password','email','gender','birthday')
+
 
 
 
 class UserUpdateSerializer(ModelSerializer):
     class Meta:
         model = Person
-        fields = ('username','password')
+        fields = ('name','lastname','password','email')
 

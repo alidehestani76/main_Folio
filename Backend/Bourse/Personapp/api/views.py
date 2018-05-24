@@ -26,14 +26,3 @@ class UserUpdateAPIView(generics.RetrieveUpdateAPIView):
     lookup_field = 'username'
     queryset = Person.objects.all()
     serializer_class = UserUpdateSerializer
-
-# class UpdateMembership(generics.UpdateAPIView):
-#     lookup_fields = ('username', 'boursename')
-#     serializer_class = UpdateMembership
-#     def get_queryset(self):
-#         username = self.kwargs['username']
-#         boursename = self.kwargs['boursename']
-#         return  MemberShip.objects.filter(person=username, bourse=boursename)
-
-
-

@@ -6,24 +6,15 @@ from Membership.api.serializers import UpdateMembership, CreateMembership, WhatP
 class UpdateMembership(generics.UpdateAPIView):
     #lookup_fields = ('username', 'namad')
 
-
     serializer_class = UpdateMembership
     def get_object(self):
         username = self.kwargs['username']
         namad = self.kwargs['namad']
         return  MemberShip.objects.get(person=username, bourse=namad)
 
-
-
-
-
-
 class CreateMembership(generics.CreateAPIView):
     queryset = MemberShip.objects.all()
     serializer_class = CreateMembership
-
-
-
 
 class WhatPersonHave(generics.ListAPIView):
     serializer_class = WhatPersonHave
