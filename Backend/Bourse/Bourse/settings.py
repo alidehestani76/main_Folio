@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Bourseapp',
     'Personapp',
+    'Membership',
     'rest_framework',
     'django_crontab',
     "django_cron",

@@ -1,5 +1,7 @@
-from django.db import models
+from datetime import datetime
 from Bourseapp.models import Bourse
+from django.db import models
+
 
 
 class Person(models.Model):
@@ -10,6 +12,16 @@ class Person(models.Model):
     password=models.TextField(default="0000",null=False,blank=False)
     log_in=models.BooleanField(default=False)
     money=models.IntegerField(default='0',blank=True,null=True)
+    male = 'm'
+    female = 'f'
+    gender_CHOICES = (
+        (male, 'male'),
+        (female, 'female'),
+    )
+    gender=models.CharField(max_length=20,null=True,blank=True,choices=gender_CHOICES)
+    email=models.EmailField(null=True,blank=True)
+    birthday=models.DateField(null=True,blank=True)
+    date = models.DateTimeField(default=datetime.now, blank=True,editable=False)
 
     #whatStocks=models.ManyToManyField(MemberShip)
 
@@ -23,15 +35,3 @@ class Person(models.Model):
         self.money=money
 
 
-
-
-class MemberShip(models.Model):
-    bourse=models.ForeignKey(Bourse,on_delete=True)
-    person=models.ForeignKey(Person,on_delete=True)
-
-    # def validate_even(value):
-    #     if (value == 0):
-    #         MemberShip.objects.filter(bourse=Bourse.pk, person=Person.pk).delete()
-    # number_of_stocks_person_has=models.IntegerField(default=0,validators=[validate_even])
-
-    number_of_stocks_person_has = models.IntegerField(default=0)
