@@ -10,6 +10,7 @@ class Person(models.Model):
     password=models.TextField(default="0000",null=False,blank=False)
     log_in=models.BooleanField(default=False)
     money=models.IntegerField(default='0',blank=True,null=True)
+
     #whatStocks=models.ManyToManyField(MemberShip)
 
     def __str__(self):

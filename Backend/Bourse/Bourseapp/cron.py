@@ -15,6 +15,8 @@ import urllib.request
 from Bourseapp.models  import Bourse
 
 
+
+
 class From_Bourse :
     namad=None
     name = None
@@ -72,7 +74,7 @@ class From_Bourse :
 
         stocks = []
         #for i in range(0, 270):
-        for i in range(0,data["bData"].size()):
+        for i in range(0,len(data["bData"])):
             stock = From_Bourse()
             stock.namad = data["bData"][i]["val"][0]["v"]
             stock.name = data["bData"][i]["val"][1]["v"]
@@ -99,9 +101,6 @@ class From_Bourse :
             #file1 = open("/home/wt/Desktop/hasan.txt", "a")
             #file1.write(stock.name)
             self.maping(stock)
-
-
-
 
 # test=From_Bourse()
 # test.make_Stock()

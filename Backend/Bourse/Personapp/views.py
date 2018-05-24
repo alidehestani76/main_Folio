@@ -56,7 +56,7 @@ from pyasn1.type.univ import Integer
 #
 def Buy_Sell(request):
     if 'buy' in request.GET:
-        my_buy=request.GET['buy'].split()
+        my_buy=request.GET['buy'].split('$')
         user_name=my_buy[0]
         num=int(my_buy[1])
         stocks_name=my_buy[2]
@@ -104,7 +104,7 @@ def Buy_Sell(request):
             bourse=stocks_name,person=user_name).exists()
 
         if(is_exist==False):
-            MemberShip.objects.create(bourse=bn,person=un,person_name=un.username,number_of_stocks_person_has=num)
+            MemberShip.objects.create(bourse=bn,person=un,number_of_stocks_person_has=num)
             message='ok'
 
         else:
@@ -115,7 +115,7 @@ def Buy_Sell(request):
         return HttpResponse(message)
 
     elif 'sell' in request.GET:
-        my_buy = request.GET['sell'].split()
+        my_buy = request.GET['sell'].split('$')
         user_name = my_buy[0]
         num = int(my_buy[1])
         stocks_name = my_buy[2]
@@ -144,6 +144,9 @@ def Buy_Sell(request):
                 message = 'see what you have first'
             else:
                 obj.number_of_stocks_person_has -= num
+                if(obj.number_of_stocks_person_has==0):
+                    obj.delete()
+                    return HttpResponse('bye_bye')
                 message = "ok!!"
             obj.save()
         return HttpResponse(message)
@@ -152,9 +155,3 @@ def Buy_Sell(request):
     return HttpResponse('bad request :D')
 
 #
-#
-#
-#
-#
-#
-
