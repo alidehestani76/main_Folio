@@ -40,7 +40,7 @@ class From_Bourse :
     best_Supply = None
     best_Demand = None
 
-    def maping(self,stock):
+    def mapping(self,stock):
         is_exist=Bourse.objects.filter(namad=stock.namad).exists()
         if(is_exist==True):
             obj = Bourse.objects.get(namad=stock.namad)
@@ -100,7 +100,7 @@ class From_Bourse :
         for stock in stocks:
             #file1 = open("/home/wt/Desktop/hasan.txt", "a")
             #file1.write(stock.name)
-            self.maping(stock)
+            self.mapping(stock)
 
 # test=From_Bourse()
 # test.make_Stock()

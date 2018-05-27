@@ -12,6 +12,7 @@ class Person(models.Model):
     password=models.TextField(default="0000",null=False,blank=False)
     log_in=models.BooleanField(default=False)
     money=models.IntegerField(default='1000',blank=True,null=True)
+    #image=models.ImageField(blank=True,null=True)
     male = 'm'
     female = 'f'
     gender_CHOICES = (
