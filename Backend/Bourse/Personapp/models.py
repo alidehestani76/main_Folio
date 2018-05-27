@@ -29,10 +29,4 @@ class Person(models.Model):
     def __str__(self):
         return self.username
 
-    def getMoney(self):
-        return self.money
-
-    def setMoney(self,money):
-        self.money=money
-
 

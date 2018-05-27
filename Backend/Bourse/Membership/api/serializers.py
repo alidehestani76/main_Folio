@@ -33,7 +33,8 @@ class helpJoinBourseTable(serializers.ModelSerializer):
 
     class Meta:
         model = Bourse
-        fields = ('namad','lastest_Amount','lastest_Change','lastest_Percentage' )
+        #fields = ('namad','lastest_Amount','lastest_Change','lastest_Percentage' )
+        fields='__all__'
 
 class What_Person_has(ModelSerializer):
     bourse=helpJoinBourseTable()
