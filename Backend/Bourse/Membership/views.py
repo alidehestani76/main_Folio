@@ -6,8 +6,6 @@ from Personapp.models import Person
 from Bourseapp.models import Bourse
 from Membership.models import MemberShip
 
-
-
 def Buy_Sell(request):
     if 'change' in request.GET:
         my_change=request.GET['change'].split('$')

@@ -13,6 +13,10 @@ import json
 import urllib.request
 
 from Bourseapp.models  import Bourse
+from Newsapp.models import News
+from bs4 import BeautifulSoup
+import urllib.request
+import datetime
 
 
 
@@ -101,6 +105,73 @@ class From_Bourse :
             #file1 = open("/home/wt/Desktop/hasan.txt", "a")
             #file1.write(stock.name)
             self.mapping(stock)
+
+class News :
+    title = None
+    date_day = None
+    date_month = None
+    date_year = None
+    news_date = None
+    news_Quote = None
+    news_Body = None
+    def mapping(self , news):
+        is_exist = Bourse.objects.filter(title=news.title).exists()
+        if (is_exist == True):
+            obj = News.objects.get(title= news.title)
+        else:
+            obj = News()
+        obj.title = news.title
+        obj.date_day=news.date_day
+        obj.date_month=news.date_month
+        obj.date_year = news.date_year
+        obj.news_date= news.news_date
+        obj.news_Quote = news.news_Quote
+        obj.news_Body = news.news_Body
+        obj.save()
+
+    def make_News(self):
+        news=[]
+        for i in range(47830 , 47800 , -1):
+            new=News
+            try:
+                fp = urllib.request.urlopen("http://tse.ir/news/newsPages/news_N"+str(i)+".html")
+                mybytes = fp.read()
+                mystr = mybytes.decode("utf8")
+                fp.close()
+                #print("i is :"+str(i))
+                soup = BeautifulSoup(mystr, 'html.parser')
+                now = datetime.datetime.now()
+                #print(str(now))
+                #title
+                new.date_day=int(now.day)
+                new.date_month = int(now.month)
+                new.date_year = int(now.year)
+                new.title=soup.title.string
+                #print(soup.title.string)
+                #date
+                new.news_date=soup.p.text.strip()
+                #print(soup.p.text.strip())
+                #title
+                #print(soup.h3.text.strip())
+                #qoute and body
+                for qute in soup.find_all('div') :
+                    if qute.get('id')=='newsQuote' :
+                        new.news_Quote= qute.text.strip()
+                        #print(qute.text.strip())
+                    if qute.get('id')=='newsBody' :
+                        new.news_Body = qute.text.strip()
+                        #print(qute.text.strip())
+                news.append(new)
+            except urllib.error.HTTPError as f:
+                continue
+        for new in news :
+            self.mapping(new)
+
+
+#Ali inja barat comment gozashtam inam crone khob ? bayad azash ye test besaazi bebini kar mikone ya na
+#test=News()
+#test.make_News()
+
 
 # test=From_Bourse()
 # test.make_Stock()

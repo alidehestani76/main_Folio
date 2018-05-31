@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Bourseapp',
     'Personapp',
     'Membership',
+    'Newsapp',
     'rest_framework',
     'django_crontab',
     "django_cron",
