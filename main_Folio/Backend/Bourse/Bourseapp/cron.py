@@ -130,7 +130,7 @@ class Newses :
         obj.save()
 
     def make_News(self):
-        news=[]
+        #news=[]
         for i in range(47830 , 47800 , -1):
             new=Newses
             try:
@@ -161,10 +161,10 @@ class Newses :
                     if qute.get('id')=='newsBody' :
                         new.news_Body = qute.text.strip()
                         #print(qute.text.strip())
-                news.append(new)
+                #news.append(new)
                 self.mapping(new)
-                file1 = open("/home/wt/Desktop/adeh.txt", "a")
-                file1.write(new.title)
+                #file1 = open("/home/wt/Desktop/adeh.txt", "a")
+                #file1.write(new.title)
             except urllib.error.HTTPError as f:
                 continue
         #for new in news :
