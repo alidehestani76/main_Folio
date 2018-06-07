@@ -20,6 +20,35 @@ import datetime
 
 
 
+class Bourse_data_access:
+    def mapping(self, stock):
+        is_exist = Bourse.objects.filter(namad=stock.namad).exists()
+        if (is_exist == True):
+            obj = Bourse.objects.get(namad=stock.namad)
+        else:
+            obj = Bourse()
+        obj.namad = stock.namad
+        obj.name = stock.name
+        obj.volume = stock.volume
+        obj.value = stock.value
+        obj.count_Of_Transaction = stock.count_Of_Transaction
+        obj.max_V = stock.max_V
+        obj.min_V = stock.min_V
+        obj.final_Amount = stock.final_Amount
+        obj.final_Change = stock.final_Change
+        obj.final_Persentage = stock.final_Persentage
+        obj.lastest_Amount = stock.lastest_Amount
+        obj.lastest_Change = stock.lastest_Change
+        obj.lastest_Percentage = stock.lastest_Percentage
+        obj.yesterday = stock.yesterday
+        obj.index_Percentage = stock.index_Percentage
+        obj.PE = stock.PE
+        obj.EPS = stock.EPS
+        obj.stock_Market_Value = stock.stock_Market_Value
+        obj.best_Supply = stock.best_Supply
+        obj.best_Demand = stock.best_Demand
+        obj.save()
+
 
 class From_Bourse :
     namad=None
@@ -44,34 +73,34 @@ class From_Bourse :
     best_Supply = None
     best_Demand = None
 
-    def mapping(self,stock):
-        is_exist=Bourse.objects.filter(namad=stock.namad).exists()
-        if(is_exist==True):
-            obj = Bourse.objects.get(namad=stock.namad)
-        else:
-            obj=Bourse()
-        obj.namad=stock.namad
-        obj.name=stock.name
-        obj.volume=stock.volume
-        obj.value=stock.value
-        obj.count_Of_Transaction=stock.count_Of_Transaction
-        obj.max_V=stock.max_V
-        obj.min_V=stock.min_V
-        obj.final_Amount=stock.final_Amount
-        obj.final_Change=stock.final_Change
-        obj.final_Persentage=stock.final_Persentage
-        obj.lastest_Amount=stock.lastest_Amount
-        obj.lastest_Change =stock.lastest_Change
-        obj.lastest_Percentage=stock.lastest_Percentage
-        obj.yesterday =stock.yesterday
-        obj.index_Percentage =stock.index_Percentage
-        obj.PE=stock.PE
-        obj.EPS=stock.EPS
-        obj.stock_Market_Value =stock.stock_Market_Value
-        obj.best_Supply=stock.best_Supply
-        obj.best_Demand=stock.best_Demand
-        obj.save()
-
+    # def mapping(self, stock):
+    #     is_exist = Bourse.objects.filter(namad=stock.namad).exists()
+    #     if (is_exist == True):
+    #         obj = Bourse.objects.get(namad=stock.namad)
+    #     else:
+    #         obj = Bourse()
+    #     obj.namad = stock.namad
+    #     obj.name = stock.name
+    #     obj.volume = stock.volume
+    #     obj.value = stock.value
+    #     obj.count_Of_Transaction = stock.count_Of_Transaction
+    #     obj.max_V = stock.max_V
+    #     obj.min_V = stock.min_V
+    #     obj.final_Amount = stock.final_Amount
+    #     obj.final_Change = stock.final_Change
+    #     obj.final_Persentage = stock.final_Persentage
+    #     obj.lastest_Amount = stock.lastest_Amount
+    #     obj.lastest_Change = stock.lastest_Change
+    #     obj.lastest_Percentage = stock.lastest_Percentage
+    #     obj.yesterday = stock.yesterday
+    #     obj.index_Percentage = stock.index_Percentage
+    #     obj.PE = stock.PE
+    #     obj.EPS = stock.EPS
+    #     obj.stock_Market_Value = stock.stock_Market_Value
+    #     obj.best_Supply = stock.best_Supply
+    #     obj.best_Demand = stock.best_Demand
+    #     obj.save()
+    #
     def make_Stock(self):
         with urllib.request.urlopen("http://tse.ir/json/MarketWatch/data_1.json") as url:
             data = json.loads(url.read().decode())
@@ -104,7 +133,7 @@ class From_Bourse :
         for stock in stocks:
             file1 = open("/home/wt/Desktop/hasanh.txt", "a")
             file1.write(stock.name)
-            self.mapping(stock)
+            Bourse_data_access.mapping(self,stock)
 
 class Newses :
     title = None
@@ -176,5 +205,5 @@ class Newses :
 #test.make_News()
 
 
-#test=From_Bourse()
-#test.make_Stock()
+test=From_Bourse()
+test.make_Stock()
