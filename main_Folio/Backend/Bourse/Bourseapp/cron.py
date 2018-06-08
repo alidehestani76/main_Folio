@@ -146,17 +146,18 @@ class Newses :
     def mapping(self , news):
         is_exist = News.objects.filter(title=news.title).exists()
         if (is_exist == True):
-            obj = News.objects.get(title= news.title)
+            pass
+            #obj = News.objects.get(title= news.title)
         else:
             obj = News()
-        obj.title = news.title
-        obj.date_day=news.date_day
-        obj.date_month=news.date_month
-        obj.date_year = news.date_year
-        obj.news_date= news.news_date
-        obj.news_Quote = news.news_Quote
-        obj.news_Body = news.news_Body
-        obj.save()
+            obj.title = news.title
+            obj.date_day=news.date_day
+            obj.date_month=news.date_month
+            obj.date_year = news.date_year
+            obj.news_date= news.news_date
+            obj.news_Quote = news.news_Quote
+            obj.news_Body = news.news_Body
+            obj.save()
 
     def make_News(self):
         #news=[]
@@ -201,9 +202,9 @@ class Newses :
 
 
 #Ali inja barat comment gozashtam inam crone khob ? bayad azash ye test besaazi bebini kar mikone ya na
-#test=Newses()
-#test.make_News()
+test=Newses()
+test.make_News()
 
 
-test=From_Bourse()
-test.make_Stock()
+#test=From_Bourse()
+#test.make_Stock()
