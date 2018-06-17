@@ -202,8 +202,8 @@ class Newses :
 
 
 #Ali inja barat comment gozashtam inam crone khob ? bayad azash ye test besaazi bebini kar mikone ya na
-test=Newses()
-test.make_News()
+#test=Newses()
+#test.make_News()
 
 
 #test=From_Bourse()
