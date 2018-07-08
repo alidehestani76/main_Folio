@@ -31,4 +31,7 @@ urlpatterns = [
     #url(r'^Education/', include('Newsapp.urls')) ,
     url(r'^Newsapp_api/', include ('Newsapp.api.urls')) ,
     url(r'^Education_api/', include('Education.Education_API.urls')),
+    url(r'^login/', include('login.urls')),
+
+
 ]
