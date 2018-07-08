@@ -8,9 +8,9 @@ urlpatterns = [
     #create user
     url(r'^user/create$', views.UserCreateAPIView.as_view(), name='user-create'),
     #all users informations
-    url(r'^person_information',views.UserListAPIview.as_view()) ,
+    url(r'^person_information',views.UserListAPIView.as_view()) ,
     #information about a user
-    url(r'^information/(?P<username>\w{0,50})/$', views.UserDetailsAPIview.as_view()),
+    url(r'^information/(?P<username>\w{0,50})/$', views.UserDetailsAPIView.as_view()),
 
 
 

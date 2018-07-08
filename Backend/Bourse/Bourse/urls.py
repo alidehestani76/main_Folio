@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'^Bourseapp_api/',include('Bourseapp.api.urls')) ,
     url(r'^Personapp_api/', include('Personapp.api.urls')),
     url(r'^Membership_api/', include('Membership.api.urls')),
-    #url(r'^Newsapp/', include('Newsapp.urls')) ,
+    #url(r'^Education/', include('Newsapp.urls')) ,
     url(r'^Newsapp_api/', include ('Newsapp.api.urls')) ,
-
+    url(r'^Education_api/', include('Education.Education_API.urls')),
 ]
