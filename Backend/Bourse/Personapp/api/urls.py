@@ -13,6 +13,5 @@ urlpatterns = [
     url(r'^information/(?P<username>\w{0,50})/$', views.UserDetailsAPIView.as_view()),
 
 
-
 ]
 

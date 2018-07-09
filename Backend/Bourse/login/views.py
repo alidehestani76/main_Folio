@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse , JsonResponse
 
 from Personapp.models import Person
 
@@ -17,18 +17,15 @@ def lol(request):
             #if request.session["username"] == my_q[0] :
             if request.session.has_key("username"):
                 if request.session["username"] == my_q[0]:
-                    return HttpResponse("already logged in!")
-            message='yes'
+                    return JsonResponse({'result': True , 'info':"already logged in"})
 
             request.session["username"] = my_q[0]
+            return JsonResponse({'result': True, 'info': "logged in successfully"})
         else:
-            message="wrong username or password"
-
-
-        return HttpResponse(message)
+            return JsonResponse({'result': False, 'info': "Wrong username or password"})
 
     else :
-        return HttpResponse("false form")
+        return JsonResponse({'result': False, 'info': "already logged in"})
 
 
 
@@ -37,13 +34,14 @@ def log_out(request):
         my_q = request.GET['logout'].split('*')
         is_exist = Person.objects.filter(name=my_q[0]).exists()
 
-
-        if request.session["username"]==my_q[0]:
-            request.session.pop("username")
-            return HttpResponse("success")
-
+        if request.session.has_key("username"):
+            if request.session["username"]==my_q[0]:
+                request.session.pop("username")
+                return JsonResponse({'result': True, 'info': "logged out successfully"})
+            else:
+                return JsonResponse({'result': True, 'info': "not found"})
         else:
-            return HttpResponse("not found")
-
+            return JsonResponse({'result': True, 'info': "not logged in"})
+            
     else:
-        return HttpResponse("false form")
+        return JsonResponse({'result': True, 'info': "false form"})

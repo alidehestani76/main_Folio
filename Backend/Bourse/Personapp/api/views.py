@@ -1,3 +1,6 @@
+from django_common import session
+from requests import Session
+from requests import request
 from rest_framework import generics
 from Personapp.models import Person
 
@@ -10,6 +13,7 @@ class UserListAPIView(generics.ListAPIView):
 
 
 class UserDetailsAPIView(generics.RetrieveAPIView):
+    #session = Session.objects.get(session_key=session_key)
     lookup_field = 'username'
     queryset = Person.objects.all()
     serializer_class = UserDetailsSerializer
